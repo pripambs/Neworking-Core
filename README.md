@@ -1,3 +1,1 @@
-# maven-project
-
-Simple Maven Project
+## Sampling Core Switch Aruba 2950
