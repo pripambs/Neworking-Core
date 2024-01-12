@@ -1,0 +1,559 @@
+ISKCORE(config)# sh run
+
+Running configuration:
+
+; JL261A Configuration Editor; Created on release #WC.16.10.0009
+; Ver #14:67.6f.f8.1d.9b.3f.bf.bb.ef.7c.59.fc.6b.fb.9f.fc.ff.ff.37.ef:44
+hostname "ISKCORE"
+module 1 type jl261a
+qos dscp-map 011110 priority 6
+qos type-of-service diff-services
+dhcp-snooping
+dhcp-snooping authorized-server 10.23.13.254
+dhcp-snooping authorized-server 10.23.50.254
+dhcp-snooping authorized-server 10.23.51.254
+dhcp-snooping authorized-server 10.23.52.254
+dhcp-snooping authorized-server 10.23.53.254
+dhcp-snooping authorized-server 10.23.54.254
+dhcp-snooping authorized-server 10.23.55.254
+dhcp-snooping authorized-server 10.23.56.254
+dhcp-snooping authorized-server 10.23.58.254
+dhcp-snooping authorized-server 10.23.59.254
+dhcp-snooping authorized-server 10.23.60.254
+dhcp-snooping authorized-server 10.23.61.254
+dhcp-snooping authorized-server 10.23.62.254
+dhcp-snooping authorized-server 10.23.63.254
+dhcp-snooping authorized-server 10.23.64.254
+dhcp-snooping authorized-server 10.23.65.254
+dhcp-snooping authorized-server 10.23.66.254
+dhcp-snooping authorized-server 10.23.67.254
+dhcp-snooping authorized-server 10.23.68.254
+dhcp-snooping authorized-server 10.23.255.1
+dhcp-snooping vlan 760 786 2501-2507 2509-2519
+timesync ntp
+ntp unicast
+ntp server 10.100.5.116 iburst
+ntp enable
+no telnet-server
+time timezone 420
+no web-management
+ip route 0.0.0.0 0.0.0.0 10.23.255.2
+ip routing
+interface 3
+   name "IPHONE"
+   exit
+interface 4
+   name "HUB"
+   exit
+interface 5
+   name "PRINTER"
+   exit
+interface 6
+   name "DATA"
+   exit
+interface 8
+   name "Iskandarsyah-AP01"
+   exit
+interface 9
+   name "R510-WHHLM-50"
+   exit
+interface 10
+   name "R500-BO-1"
+   exit
+interface 22
+   name "DATA"
+   exit
+interface 23
+   name "CCTV"
+   exit
+interface 24
+   name "LINKTOSOPHOS"
+   exit
+snmp-server community "public" unrestricted
+snmp-server community "skdpublic" operator
+snmp-server host 10.100.4.102 community "skdpublic"
+vlan 1
+   name "DEFAULT_VLAN"
+   no untagged 1-24
+   untagged 25-28
+   ip address dhcp-bootp
+   ipv6 enable
+   ipv6 address dhcp full
+   exit
+vlan 10
+   name "BoD"
+   tagged 8-10,24
+   ip address 10.127.10.1 255.255.255.0
+   dhcp-server
+   exit
+vlan 22
+   name "CCTV"
+   untagged 23
+   tagged 24
+   ip address 10.100.127.2 255.255.255.0
+   exit
+vlan 28
+   name "absen"
+   tagged 8-10,24
+   ip address 10.127.28.1 255.255.254.0
+   dhcp-server
+   exit
+vlan 753
+   name "staff"
+   tagged 8-10,24
+   ip address 10.23.5.254 255.255.254.0
+   dhcp-server
+   exit
+vlan 754
+   name "VIP"
+   tagged 8-10,24
+   ip address 10.23.7.254 255.255.254.0
+   dhcp-server
+   exit
+vlan 755
+   name "Lantai1Voice"
+   tagged 1-4,6-7,9-22,24
+   ip address 10.23.8.254 255.255.255.0
+   voice
+   dhcp-server
+   exit
+vlan 756
+   name "Lantai2Voice"
+   tagged 1-2,7,9-21,24
+   ip address 10.23.9.254 255.255.255.0
+   voice
+   dhcp-server
+   exit
+vlan 757
+   name "Lantai1Peripheral"
+   tagged 1-2,7,9-21,24
+   ip address 10.23.10.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 758
+   name "Lantai2Peripheral"
+   untagged 5
+   tagged 1-2,7,9-21,24
+   ip address 10.23.11.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 760
+   name "Management"
+   untagged 8-10,24
+   ip address 10.23.255.1 255.255.255.0
+   dhcp-server
+   exit
+vlan 786
+   name "Quarantine"
+   tagged 8-10,24
+   ip address 10.23.13.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2501
+   name "CEO_Office"
+   tagged 8-10,24
+   ip address 10.23.50.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2502
+   name "Corporate_Finance"
+   tagged 8-10,24
+   ip address 10.23.51.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2503
+   name "Corporate_HR"
+   tagged 8-10,24
+   ip address 10.23.52.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2504
+   name "Corporate_IT"
+   tagged 8-10,24
+   ip address 10.23.53.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2505
+   name "Corporate_SecreNLegal"
+   tagged 8-10,24
+   ip address 10.23.54.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2506
+   name "Corporate_StrategyNBuDev"
+   tagged 8-10,24
+   ip address 10.23.55.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2507
+   name "Finance_Accounting"
+   tagged 8-10,24
+   ip address 10.23.56.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2508
+   name "ITspecialForce"
+   tagged 8-10,24
+   ip address 10.23.57.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2509
+   name "Marketing_Communication"
+   tagged 8-10,24
+   ip address 10.23.58.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2510
+   name "Marketing_Trading"
+   tagged 8-10,24
+   ip address 10.23.59.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2511
+   name "Merchandising"
+   tagged 8-10,24
+   ip address 10.23.60.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2512
+   name "Operation"
+   tagged 8-10,24
+   ip address 10.23.61.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2513
+   name "Public_Relation"
+   tagged 8-10,24
+   ip address 10.23.62.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2514
+   name "Sales_Trading"
+   tagged 8-10,24
+   ip address 10.23.63.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2515
+   name "Supporting"
+   tagged 8-10,24
+   ip address 10.23.64.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2516
+   name "Supply_Chain"
+   tagged 8-10,24
+   ip address 10.23.65.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2517
+   name "Machine"
+   tagged 8-10,24
+   ip address 10.23.66.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2518
+   name "Guest"
+   tagged 8-10,24
+   ip address 10.23.67.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2519
+   name "BYoD"
+   tagged 8-10,24
+   ip address 10.23.68.254 255.255.255.0
+   dhcp-server
+   exit
+vlan 2520
+   name "Wired_Lan"
+   untagged 1-4,6-7,11-22
+   tagged 9-10,24
+   ip address 10.23.69.254 255.255.255.0
+   dhcp-server
+   exit
+spanning-tree priority 4
+dhcp-server ping packets 3
+dhcp-server pool "vlan10"
+   default-router "10.127.10.1"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.127.10.0 255.255.255.0
+   range 10.127.10.51 10.127.10.240
+   exit
+dhcp-server pool "vlan28"
+   default-router "10.127.28.1"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.127.28.0 255.255.254.0
+   range 10.127.28.51 10.127.29.200
+   exit
+dhcp-server pool "vlan753"
+   default-router "10.23.5.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.4.0 255.255.254.0
+   range 10.23.4.51 10.23.5.240
+   exit
+dhcp-server pool "vlan754"
+   default-router "10.23.7.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.6.0 255.255.254.0
+   range 10.23.6.51 10.23.7.240
+   exit
+dhcp-server pool "vlan755"
+   default-router "10.23.8.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.8.0 255.255.255.0
+   range 10.23.8.51 10.23.8.240
+   exit
+dhcp-server pool "vlan756"
+   default-router "10.23.9.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.9.0 255.255.255.0
+   range 10.23.9.51 10.23.9.240
+   exit
+dhcp-server pool "vlan757"
+   default-router "10.23.10.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.10.0 255.255.255.0
+   range 10.23.10.51 10.23.10.240
+   exit
+dhcp-server pool "vlan758"
+   default-router "10.23.11.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.11.0 255.255.255.0
+   range 10.23.11.51 10.23.11.240
+   exit
+dhcp-server pool "vlan760"
+   default-router "10.23.255.1"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.255.0 255.255.255.0
+   range 10.23.255.51 10.23.255.240
+   exit
+dhcp-server pool "vlan786"
+   default-router "10.23.13.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.13.0 255.255.255.0
+   range 10.23.13.51 10.23.13.240
+   exit
+dhcp-server pool "vlan2501"
+   default-router "10.23.50.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.50.0 255.255.255.0
+   range 10.23.50.51 10.23.50.240
+   exit
+dhcp-server pool "vlan2502"
+   default-router "10.23.51.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.51.0 255.255.255.0
+   range 10.23.51.51 10.23.51.240
+   exit
+dhcp-server pool "vlan2503"
+   default-router "10.23.52.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.52.0 255.255.255.0
+   range 10.23.52.51 10.23.52.240
+   exit
+dhcp-server pool "vlan2504"
+   default-router "10.23.53.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.53.0 255.255.255.0
+   range 10.23.53.51 10.23.53.240
+   exit
+dhcp-server pool "vlan2505"
+   default-router "10.23.54.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.54.0 255.255.255.0
+   range 10.23.54.51 10.23.54.240
+   exit
+dhcp-server pool "vlan2506"
+   default-router "10.23.55.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.55.0 255.255.255.0
+   range 10.23.55.51 10.23.55.240
+   exit
+dhcp-server pool "vlan2507"
+   default-router "10.23.56.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.56.0 255.255.255.0
+   range 10.23.56.51 10.23.56.240
+   exit
+dhcp-server pool "vlan2508"
+   default-router "10.23.57.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.57.0 255.255.255.0
+   range 10.23.57.51 10.23.57.240
+   exit
+dhcp-server pool "vlan2509"
+   default-router "10.23.58.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.58.0 255.255.255.0
+   range 10.23.58.51 10.23.58.240
+   exit
+dhcp-server pool "vlan2510"
+   default-router "10.23.59.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.59.0 255.255.255.0
+   range 10.23.59.51 10.23.59.240
+   exit
+dhcp-server pool "vlan2511"
+   default-router "10.23.60.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.60.0 255.255.255.0
+   range 10.23.60.51 10.23.60.240
+   exit
+dhcp-server pool "vlan2512"
+   default-router "10.23.61.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.61.0 255.255.255.0
+   range 10.23.61.51 10.23.61.240
+   exit
+dhcp-server pool "vlan2513"
+   default-router "10.23.62.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.62.0 255.255.255.0
+   range 10.23.62.51 10.23.62.240
+   exit
+dhcp-server pool "vlan2514"
+   default-router "10.23.63.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.63.0 255.255.255.0
+   range 10.23.63.51 10.23.63.240
+   exit
+dhcp-server pool "vlan2515"
+   default-router "10.23.64.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.64.0 255.255.255.0
+   range 10.23.64.51 10.23.64.240
+   exit
+dhcp-server pool "vlan2516"
+   default-router "10.23.65.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.65.0 255.255.255.0
+   range 10.23.65.51 10.23.65.240
+   exit
+dhcp-server pool "vlan2517"
+   default-router "10.23.66.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.66.0 255.255.255.0
+   range 10.23.66.51 10.23.66.240
+   exit
+dhcp-server pool "vlan2518"
+   default-router "10.23.67.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.67.0 255.255.255.0
+   range 10.23.67.51 10.23.67.240
+   exit
+dhcp-server pool "vlan2519"
+   default-router "10.23.68.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.68.0 255.255.255.0
+   range 10.23.68.51 10.23.68.240
+   exit
+dhcp-server pool "vlan2520"
+   default-router "10.23.69.254"
+   dns-server "10.100.5.116,10.100.5.117"
+   domain-name "diamond.co.id"
+   lease 00:08:00
+   network 10.23.69.0 255.255.255.0
+   range 10.23.69.51 10.23.69.240
+   exit
+dhcp-server conflict-logging
+dhcp-server enable
+password manager
+ISKCORE(config)# sh vlans
+
+ Status and Counters - VLAN Information
+
+  Maximum VLANs to support : 256
+  Primary VLAN : DEFAULT_VLAN
+  Management VLAN :
+
+  VLAN ID Name                             | Status     Voice Jumbo
+  ------- -------------------------------- + ---------- ----- -----
+  1       DEFAULT_VLAN                     | Port-based No    No
+  10      BoD                              | Port-based No    No
+  22      CCTV                             | Port-based No    No
+  28      absen                            | Port-based No    No
+  753     staff                            | Port-based No    No
+  754     VIP                              | Port-based No    No
+  755     Lantai1Voice                     | Port-based Yes   No
+  756     Lantai2Voice                     | Port-based Yes   No
+  757     Lantai1Peripheral                | Port-based No    No
+  758     Lantai2Peripheral                | Port-based No    No
+  760     Management                       | Port-based No    No
+  786     Quarantine                       | Port-based No    No
+  2501    CEO_Office                       | Port-based No    No
+  2502    Corporate_Finance                | Port-based No    No
+  2503    Corporate_HR                     | Port-based No    No
+  2504    Corporate_IT                     | Port-based No    No
+  2505    Corporate_SecreNLegal            | Port-based No    No
+  2506    Corporate_StrategyNBuDev         | Port-based No    No
+  2507    Finance_Accounting               | Port-based No    No
+  2508    ITspecialForce                   | Port-based No    No
+  2509    Marketing_Communication          | Port-based No    No
+  2510    Marketing_Trading                | Port-based No    No
+  2511    Merchandising                    | Port-based No    No
+  2512    Operation                        | Port-based No    No
+  2513    Public_Relation                  | Port-based No    No
+  2514    Sales_Trading                    | Port-based No    No
+  2515    Supporting                       | Port-based No    No
+  2516    Supply_Chain                     | Port-based No    No
+  2517    Machine                          | Port-based No    No
+  2518    Guest                            | Port-based No    No
+  2519    BYoD                             | Port-based No    No
+  2520    Wired_Lan                        | Port-based No    No
